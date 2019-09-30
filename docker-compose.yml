@@ -1,0 +1,6 @@
+version: '3.4'
+services:
+  sanic-simple-api:
+    image: "${REGISTRY}/${SANIC-SIMPLE-API_SERVICE}:${SANIC-SIMPLE-API_SERVICE__VERSION}"
+    ports:
+      - 5000

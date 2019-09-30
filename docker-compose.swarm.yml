@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+  sanic-simple-api:
+    networks:
+      - proxy
+    healthcheck:
+      test: 'nc -z localhost 5000 > /dev/null 2>&1 || exit 1'
+    deploy:
+      mode: replicated
+      labels:
+        traefik.enable: 'true'
+        traefik.docker.network: traefik_proxy
+        traefik.backend: sanic-simple-api
+        traefik.backend.loadbalancer.method: drr
+        traefik.frontend.entryPoints.http.redirect: https
+        traefik.frontend.rule: '{{ services.sanic-simple-api.traefik.frontend.rule }}'
+        traefik.port: '5000'
+      restart_policy:
+        condition: on-failure
+networks:
+  proxy:
+    external:
+      name: traefik_proxy

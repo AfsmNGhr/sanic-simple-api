@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  sanic-simple-api:
+    image: "$REGISTRY/${SANIC-SIMPLE-API_SERVICE}:${SANIC-SIMPLE-API_SERVICE__VERSION}"
+    build:
+      context: .
+    networks:
+      - net
+    volumes:
+      - .:/home/sanic-simple-api
+    ports:
+      - 5000
+    stdin_open: true
+    tty: true
+    environment:
+      DEBUG: 'true'
+networks:
+  net:

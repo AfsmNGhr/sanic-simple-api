@@ -1,0 +1,2 @@
+sanic==19.6.3
+sanic-cors==0.9.9.post3
