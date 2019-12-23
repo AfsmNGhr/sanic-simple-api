@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   sanic-simple-api:
-    image: "$REGISTRY/${SANIC-SIMPLE-API_SERVICE}:${SANIC-SIMPLE-API_SERVICE__VERSION}"
+    image: "$REGISTRY/${SANIC_SIMPLE_API_SERVICE}:${SANIC_SIMPLE_API_SERVICE__VERSION}"
     build:
       context: .
     deploy:
