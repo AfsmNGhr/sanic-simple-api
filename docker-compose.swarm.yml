@@ -13,7 +13,7 @@ services:
         traefik.backend: sanic-simple-api
         traefik.backend.loadbalancer.method: drr
         traefik.frontend.entryPoints.http.redirect: https
-        traefik.frontend.rule: '{{ services.sanic-simple-api.traefik.frontend.rule }}'
+        traefik.frontend.rule: '{{ services.sanic_simple_api.traefik.frontend.rule }}'
         traefik.port: '5000'
       restart_policy:
         condition: on-failure
