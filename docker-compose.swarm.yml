@@ -1,6 +1,7 @@
 version: '3.4'
 services:
   sanic-simple-api:
+    stop_grace_period: 30s
     networks:
       - proxy
     healthcheck:
@@ -17,6 +18,10 @@ services:
         traefik.port: '5000'
       restart_policy:
         condition: on-failure
+      update_config:
+        parallelism: 1
+        failure_action: rollback
+        order: start-first
 networks:
   proxy:
     external:
