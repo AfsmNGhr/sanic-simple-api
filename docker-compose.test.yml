@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  sanic-simple-api:
+    image: "$REGISTRY/${SANIC_SIMPLE_API_SERVICE}:${SANIC_SIMPLE_API_SERVICE__VERSION}"
+    build:
+      context: .
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 3s
